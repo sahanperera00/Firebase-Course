@@ -51,7 +51,7 @@ const FirestoreDatabase = () => {
   };
 
   const handleUpdateData = () => {
-    const docToUpdate = doc(databese, "users", "7Q5VksEcX0XuBedr0kf8"); // 7Q5VksEcX0XuBedr0kf8
+    const docToUpdate = doc(databese, "users", "7Q5VksEcX0XuBedr0kf8"); // add UID manually
     updateDoc(docToUpdate, {
       password: data.password,
     })
@@ -64,7 +64,7 @@ const FirestoreDatabase = () => {
   };
 
   const handleDeleteData = () => {
-    const docToDelete = doc(databese, "users", "7Q5VksEcX0XuBedr0kf8"); // 7Q5VksEcX0XuBedr0kf8
+    const docToDelete = doc(databese, "users", "7Q5VksEcX0XuBedr0kf8"); // add UID manually
     deleteDoc(docToDelete)
       .then(() => {
         alert("Data Deleted");
