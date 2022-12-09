@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { app, databese } from "../firebaseConfig";
 
 import {
@@ -12,6 +12,7 @@ import {
 
 const FirestoreDatabase = () => {
   const [data, setData] = useState({});
+  const [array, setArray] = useState([]);
   const collectionRef = collection(databese, "users");
 
   const handleInput = (event) => {
@@ -40,18 +41,21 @@ const FirestoreDatabase = () => {
   const handleGetAllData = () => {
     getDocs(collectionRef)
       .then((response) => {
-        alert("Check the console");
-        response.docs.map((item) => {
-          console.log(item.data());
-        });
+        // alert("Check the console");
+        // response.docs.map((item) => {
+        //   console.log(item.data());
+        // });
+
+        // console.log(response.docs);
+        setArray(response.docs);
       })
       .catch((error) => {
         alert(error.message);
       });
   };
 
-  const handleUpdateData = () => {
-    const docToUpdate = doc(databese, "users", "7Q5VksEcX0XuBedr0kf8"); // add UID manually
+  const handleUpdateData = (id) => {
+    const docToUpdate = doc(databese, "users", id); // add UID manually
     updateDoc(docToUpdate, {
       password: data.password,
     })
@@ -63,8 +67,8 @@ const FirestoreDatabase = () => {
       });
   };
 
-  const handleDeleteData = () => {
-    const docToDelete = doc(databese, "users", "7Q5VksEcX0XuBedr0kf8"); // add UID manually
+  const handleDeleteData = (id) => {
+    const docToDelete = doc(databese, "users", id); // add UID manually
     deleteDoc(docToDelete)
       .then(() => {
         alert("Data Deleted");
@@ -73,6 +77,10 @@ const FirestoreDatabase = () => {
         alert(error.message);
       });
   };
+
+  useEffect(() => {
+    handleGetAllData();
+  }, [array]);
 
   return (
     <>
@@ -89,9 +97,21 @@ const FirestoreDatabase = () => {
       />
       <br />
       <button onClick={handleAddData}>Add Data</button>
-      <button onClick={handleGetAllData}>Get Data</button>
-      <button onClick={handleUpdateData}>Update Data</button>
-      <button onClick={handleDeleteData}>Delete Data</button>
+      {/* <button onClick={handleGetAllData}>Get Data</button> */}
+      {/* <button onClick={handleUpdateData}>Update Data</button> */}
+      {/* <button onClick={handleDeleteData}>Delete Data</button> */}
+      <br />
+
+      {array.map((item) => {
+        return (
+          <>
+            <span>{item.data().email + " " + item.data().password}</span>{" "}
+            <button onClick={() => handleUpdateData(item.id)}>Update</button>
+            <button onClick={() => handleDeleteData(item.id)}>Delete</button>
+            <br />
+          </>
+        );
+      })}
     </>
   );
 };
