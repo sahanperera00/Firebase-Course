@@ -1,14 +1,17 @@
 import "./index.css";
-import Authentication from "./components/Authentication";
-import FirestoreDatabase from "./components/FirestoreDatabase";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HomeSharedLayout, Home, Login } from "./pages";
 
 function App() {
   return (
-    <div className="App">
-      <h3>Firebase Basics</h3>
-      <Authentication />
-      <FirestoreDatabase />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomeSharedLayout />}>
+          <Route index element={<Home />} />
+          <Route path="login" element={<Login />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 
