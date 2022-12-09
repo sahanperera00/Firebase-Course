@@ -1,11 +1,14 @@
 import { useEffect } from "react";
-import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
+import {
+  getAuth,
+  signOut,
+  onAuthStateChanged,
+  deleteUser,
+} from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { app } from "../firebaseConfig";
 
 function Home() {
-  const auth = getAuth(app);
-  let user = auth.currentUser;
+  const auth = getAuth();
   const navigate = useNavigate();
 
   const handleSignout = () => {
@@ -16,6 +19,17 @@ function Home() {
       })
       .catch((error) => {
         alert("Signout Unsuccessfull");
+      });
+  };
+
+  const handleUserAccountDelete = () => {
+    let user = auth.currentUser;
+    deleteUser(user)
+      .then(() => {
+        // alert("User Account Deleted");
+      })
+      .catch((error) => {
+        alert(error.message);
       });
   };
 
@@ -31,6 +45,7 @@ function Home() {
     <>
       <h1>Home</h1>
       <button onClick={handleSignout}>Sign out</button>
+      <button onClick={handleUserAccountDelete}>Delete Account</button>
     </>
   );
 }

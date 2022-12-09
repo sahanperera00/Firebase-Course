@@ -21,34 +21,24 @@ function Login() {
   };
 
   const handleSignin = () => {
-    let user = auth.currentUser;
-    if (user == null) {
-      signInWithEmailAndPassword(auth, data.email, data.password)
-        .then(() => {
-          //   alert("Signin Successfull");
-          navigate("/");
-        })
-        .catch((error) => {
-          alert("Signin Unsuccessfull");
-        });
-    } else {
-      alert("Already Signed in");
-      navigate("/");
-    }
+    signInWithEmailAndPassword(auth, data.email, data.password)
+      .then(() => {
+        //   alert("Signin Successfull");
+        navigate("/");
+      })
+      .catch((error) => {
+        alert("Signin Unsuccessfull");
+      });
   };
 
   const handleGoogleSignin = () => {
-    if (auth.currentUser == null) {
-      signInWithPopup(auth, googleProvider)
-        .then(() => {
-          //   alert("Google Signin Successfull");
-        })
-        .catch((error) => {
-          alert(error.message);
-        });
-    } else {
-      alert("Already Signed in");
-    }
+    signInWithPopup(auth, googleProvider)
+      .then(() => {
+        //   alert("Google Signin Successfull");
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
   };
 
   useEffect(() => {
