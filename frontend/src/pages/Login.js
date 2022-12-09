@@ -24,7 +24,7 @@ function Login() {
     signInWithEmailAndPassword(auth, data.email, data.password)
       .then(() => {
         //   alert("Signin Successfull");
-        navigate("/");
+        navigate("/home");
       })
       .catch((error) => {
         alert("Signin Unsuccessfull");
@@ -44,7 +44,7 @@ function Login() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        navigate("/");
+        navigate("/home");
       }
     });
   }, []);
@@ -65,6 +65,15 @@ function Login() {
       />
       <br />
       <button onClick={handleSignin}>Sign in</button>
+      <br />
+      <button
+        onClick={(e) => {
+          navigate("/signup");
+        }}
+      >
+        Create Account
+      </button>
+      <br />
       <button onClick={handleGoogleSignin}>Sign in with Google</button>
     </>
   );
