@@ -50,32 +50,74 @@ function Login() {
   }, []);
 
   return (
-    <>
-      <h1>Login</h1>
-      <input
-        name="email"
-        placeholder="Email"
-        onChange={(event) => handleInput(event)}
-      />
-      <br />
-      <input
-        name="password"
-        placeholder="Password"
-        onChange={(event) => handleInput(event)}
-      />
-      <br />
-      <button onClick={handleSignin}>Sign in</button>
-      <br />
-      <button
-        onClick={(e) => {
-          navigate("/signup");
+    <div
+      style={{
+        width: "30%",
+        backgroundColor: "#FFE080",
+        marginLeft: "auto",
+        marginRight: "auto",
+        marginTop: "50px",
+      }}
+    >
+      <div
+        style={{
+          width: "70%",
+          marginLeft: "auto",
+          marginRight: "auto",
+          padding: "35px 0px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
         }}
       >
-        Create Account
-      </button>
-      <br />
-      <button onClick={handleGoogleSignin}>Sign in with Google</button>
-    </>
+        <h1>Login</h1>
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            onChange={(event) => handleInput(event)}
+            class="form-control"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            onChange={(event) => handleInput(event)}
+            class="form-control"
+          />
+        </div>
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={handleSignin}
+        >
+          Sign in
+        </button>
+        <br />
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={handleGoogleSignin}
+        >
+          Sign in with Google
+        </button>
+        <br />
+        <span>Don't have an account?</span>
+        <a
+          style={{ cursor: "pointer" }}
+          onClick={(e) => {
+            navigate("/signup");
+          }}
+        >
+          Create Account
+        </a>
+      </div>
+    </div>
   );
 }
 
