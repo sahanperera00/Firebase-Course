@@ -57,7 +57,8 @@ function Home() {
     deleteDoc(docToDelete)
       .then(() => {
         // alert("Data Deleted");
-        navigate("/");
+        // navigate("/");
+        window.location.reload();
       })
       .catch((error) => {
         alert(error.message);
