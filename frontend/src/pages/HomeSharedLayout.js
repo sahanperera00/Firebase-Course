@@ -1,12 +1,13 @@
 import { Outlet } from "react-router-dom";
+import { Header, Footer } from "../components";
 
 function HomeSharedLayout() {
   return (
-    <>
-      <h1>Header</h1>
+    <div className="App">
+      <Header />
       <Outlet />
-      <h1>Footer</h1>
-    </>
+      <Footer />
+    </div>
   );
 }
 
