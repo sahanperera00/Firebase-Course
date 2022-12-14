@@ -1,4 +1,4 @@
-import "./index.css";
+import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { HomeSharedLayout, Home, Login, Signup, AddDataForm } from "./pages";
 
