@@ -8,9 +8,6 @@ function Footer() {
         backgroundColor: "#FFE080",
         display: "flex",
         justifyContent: "center",
-        position: "absolute",
-        bottom: "0",
-        right: "0",
       }}
     ></div>
   );
