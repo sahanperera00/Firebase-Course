@@ -10,7 +10,6 @@ function Header() {
         justifyContent: "center",
       }}
     >
-      {/* <h1>Header</h1> */}
       <img
         src="https://firebasestorage.googleapis.com/v0/b/fir-frontend-c2209.appspot.com/o/images%2FfirebaseLogo1.png?alt=media&token=b50c149c-1624-439f-8fac-172a16eb83d5"
         alt="logo"
