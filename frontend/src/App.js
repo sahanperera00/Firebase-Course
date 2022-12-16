@@ -1,6 +1,13 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { HomeSharedLayout, Home, Login, Signup, AddDataForm } from "./pages";
+import {
+  HomeSharedLayout,
+  Home,
+  Login,
+  Signup,
+  AddDataForm,
+  UpdateDataForm,
+} from "./pages";
 
 function App() {
   return (
@@ -11,6 +18,7 @@ function App() {
           <Route path="signup" element={<Signup />} />
           <Route path="home" element={<Home />} />
           <Route path="add" element={<AddDataForm />} />
+          <Route path="update/:id" element={<UpdateDataForm />} />
         </Route>
       </Routes>
     </Router>
