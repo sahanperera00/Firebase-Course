@@ -21,20 +21,24 @@ function Login() {
   };
 
   const handleSignin = () => {
-    signInWithEmailAndPassword(auth, data.email, data.password)
-      .then(() => {
-        //   alert("Signin Successfull");
-        navigate("/home");
-      })
-      .catch((error) => {
-        alert("Signin Unsuccessfull");
-      });
+    if (data.email != null && data.password != null) {
+      signInWithEmailAndPassword(auth, data.email, data.password)
+        .then(() => {
+          alert("Signin Successfull");
+          navigate("/home");
+        })
+        .catch((error) => {
+          alert("Signin Unsuccessfull");
+        });
+    } else {
+      alert("Please fill all the fields");
+    }
   };
 
   const handleGoogleSignin = () => {
     signInWithPopup(auth, googleProvider)
       .then(() => {
-        //   alert("Google Signin Successfull");
+        alert("Google Signin Successfull");
       })
       .catch((error) => {
         alert(error.message);
@@ -52,11 +56,12 @@ function Login() {
   return (
     <div
       style={{
-        width: "30%",
+        width: "350px",
         backgroundColor: "#FFE080",
         marginLeft: "auto",
         marginRight: "auto",
-        marginTop: "50px",
+        marginTop: "60px",
+        marginBottom: "60px",
       }}
     >
       <div
@@ -71,24 +76,24 @@ function Login() {
         }}
       >
         <h1>Login</h1>
-        <div class="mb-3">
-          <label class="form-label">Email</label>
+        <div className="mb-3">
+          <label className="form-label">Email</label>
           <input
             name="email"
             type="email"
             placeholder="Email"
             onChange={(event) => handleInput(event)}
-            class="form-control"
+            className="form-control"
           />
         </div>
-        <div class="mb-3">
-          <label class="form-label">Password</label>
+        <div className="mb-3">
+          <label className="form-label">Password</label>
           <input
             name="password"
             type="password"
             placeholder="Password"
             onChange={(event) => handleInput(event)}
-            class="form-control"
+            className="form-control"
           />
         </div>
         <button
